@@ -11,7 +11,6 @@ Run bellow command to clone this repository <br />
 
 You may use npm or yarn. Like `yarn` and `yarn start` <br />
 
-`cd server` <br />
 `npm install` <br />
 `npm start` <br />
 <br />
