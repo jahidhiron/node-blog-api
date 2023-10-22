@@ -35,8 +35,6 @@ const signin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    console.log({ email });
-    console.log(user);
     if (!user) {
       res.code = 401;
       throw new Error("Invalid credentials");

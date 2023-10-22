@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "bf2eae7c-c521-4e8d-a855-6f0c3aab65b6",
-		"name": "blog-api",
+		"_postman_id": "81dc18fa-d1f0-4590-a62c-6ab783f31e15",
+		"name": "Car-selling",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3378045"
 	},
@@ -13,10 +13,16 @@
 					"name": "signup",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "jp",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jahid Hrion\",\r\n    \"email\": \"jahid.hiron@teamlance.io\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Jahid Hiron\",\r\n    \"email\": \"user4@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +30,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/signup",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/signup",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -44,10 +48,17 @@
 					"name": "signin",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-lang-id",
+								"value": "jp",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"namehiron.96@gmail.com\",\r\n    \"password\": \"555556\"\r\n}",
+							"raw": "{\r\n    \"email\": \"namehiron.96@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,12 +66,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/signin",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/signin",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -72,13 +81,16 @@
 					"response": []
 				},
 				{
-					"name": "sent-verification-code",
+					"name": "refresh-token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"jahid.hiron@teamlance.io\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -86,30 +98,28 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/send-verification-email",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/refresh-token",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"send-verification-email"
+								"refresh-token"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "verify-user",
+					"name": "resend-email-verification-code",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"jahid.hiron@teamlance.io\",\r\n    \"code\": \"780834\"\r\n}",
+							"raw": "{\r\n    \"email\": \"hironse.96@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -117,30 +127,28 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/verify-user",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/send-code-to-email",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"verify-user"
+								"send-code-to-email"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "forgot-password-code",
+					"name": "email verification",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"jahid.hiron@teamlance.io\"\r\n}",
+							"raw": "{\r\n    \"email\": \"hironse.96@gmail.com\",\r\n    \"code\": \"568930\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,30 +156,28 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/forgot-password-code",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/verify-email",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"forgot-password-code"
+								"verify-email"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "recover-password",
+					"name": "forgot password",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"jahid.hiron@teamlance.io\",\r\n    \"code\": \"762775\",\r\n    \"password\": \"555556\"\r\n}",
+							"raw": "{\r\n    \"email\": \"namehiron.96@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -179,17 +185,73 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/recover-password",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/forgot-password",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"recover-password"
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-forgot-password-code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hironse.96@gmail.com\",\r\n    \"code\": \"233001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/verify-forgot-password-code",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify-forgot-password-code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hironse.96@gmail.com\",\r\n    \"code\": \"233001\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/reset-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password"
 							]
 						}
 					},
@@ -198,17 +260,11 @@
 				{
 					"name": "change-password",
 					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg3ZGE1ZmFkOGE1ZTY1ZWY4ZWE5NTEiLCJuYW1lIjoiSmFoaWQgSGlyb24iLCJlbWFpbCI6ImphaGlkLmhpcm9uQHRlYW1sYW5jZS5pbyIsInJvbGUiOjMsImlhdCI6MTY4NjgwMzgwOSwiZXhwIjoxNjg3NDA4NjA5fQ.2-8G6GdEFijKysSqAg3lbERrYqrnHt84N3Jt6NYOxwM",
-								"type": "text"
-							}
-						],
+						"method": "POST",
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"oldPassword\": \"555556\",\r\n    \"newPassword\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"oldPassword\": \"555555\",\r\n    \"newPassword\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -216,12 +272,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/change-password",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/change-password",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -233,19 +287,20 @@
 					"response": []
 				},
 				{
-					"name": "update-profile",
+					"name": "soft delete user",
 					"request": {
-						"method": "PUT",
+						"method": "DELETE",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY4OTE0Mjc0OCwiZXhwIjoxNjg5NzQ3NTQ4fQ.mwKhjKHLHNwxXyqA2b2KZZOAJJAohuKRmChRyuff0vs",
-								"type": "text"
+								"key": "Cookie",
+								"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM4MjI2NzdjNmFkNWU0NTViODBlYzIiLCJuYW1lIjoiSmFoaWQgSGlyb24iLCJlbWFpbCI6InUzQGdtYWlsLmNvbSIsImF2YXRhciI6Ii4vYXZhdGFyLnBuZyIsImxhbmciOjEsInJvbGUiOjMsInVzZXJSZWYiOnsiY2FuZGlkYXRlSWQiOiI2MzM4MjI2NzdjNmFkNWU0NTViODBlYzAifSwiaWF0IjoxNjY0NjgxOTQ4LCJleHAiOjE2NjUyODY3NDh9.HlQ62LrJbMiBUcAx02Hnz_1kHHiFJC_9we-dJoVsRZY",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jahid\",\r\n    \"email\": \"user1@gmail.com\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,17 +308,55 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/update-profile",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/user/soft/643cd394bc3e2e1808059f89",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"update-profile"
+								"user",
+								"soft",
+								"643cd394bc3e2e1808059f89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hard delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM4MjI2NzdjNmFkNWU0NTViODBlYzIiLCJuYW1lIjoiSmFoaWQgSGlyb24iLCJlbWFpbCI6InUzQGdtYWlsLmNvbSIsImF2YXRhciI6Ii4vYXZhdGFyLnBuZyIsImxhbmciOjEsInJvbGUiOjMsInVzZXJSZWYiOnsiY2FuZGlkYXRlSWQiOiI2MzM4MjI2NzdjNmFkNWU0NTViODBlYzAifSwiaWF0IjoxNjY0NjgxOTQ4LCJleHAiOjE2NjUyODY3NDh9.HlQ62LrJbMiBUcAx02Hnz_1kHHiFJC_9we-dJoVsRZY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/user/hard/643cd394bc3e2e1808059f89",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"user",
+								"hard",
+								"643cd394bc3e2e1808059f89"
 							]
 						}
 					},
@@ -278,14 +371,15 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg5NWE2ZmUzNWZmZjYzMmJhODJkNDciLCJuYW1lIjoiSmFoaWQgSHJpb24iLCJlbWFpbCI6Im5hbWVoaXJvbi45NkBnbWFpbC5jb20iLCJyb2xlIjozLCJpYXQiOjE2OTI5NTUxNDIsImV4cCI6MTY5MzU1OTk0Mn0.20ZNyO3r1kzLRkqI6nsWeCaPaqcnnaLs5fM7UsRRVIE",
-								"type": "text"
+								"key": "Cookie",
+								"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXlzaGEgU2lkZGlrYSIsImVtYWlsIjoiYXlzaGEuc2lkZGlrYTAzMDRAZ21haWwuY29tIiwiaWF0IjoxNjgxNDUyODExLCJleHAiOjE2ODE0NTI4NDEsImF1ZCI6IjY0MzhlYjVmNmY0NmQyYzkzNzhlMDE4NiIsImlzcyI6ImphaGlkYWNhZGVteS5jb20ifQ.jM4chetnc461Q2H-YugJfCDiM9_REjgb1aPvlDxz-Z4; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXlzaGEgU2lkZGlrYSIsImVtYWlsIjoiYXlzaGEuc2lkZGlrYTAzMDRAZ21haWwuY29tIiwiaWF0IjoxNjgxNDUyODExLCJleHAiOjE2ODE0NTI4NzEsImF1ZCI6IjY0MzhlYjVmNmY0NmQyYzkzNzhlMDE4NiIsImlzcyI6ImphaGlkYWNhZGVteS5jb20ifQ.Et-HBW9oBkCddYcOOqIQmbL92aSm7Fh5PzRsD031w00",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jahid\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"profilePic\": \"649285ecc4a35ff00f1c1479\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -293,17 +387,136 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/auth/current-user",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/auth/current",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
 								"auth",
-								"current-user"
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "namehiron.96@gmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzYyN2Y3MmZhMzkwYzc0OGU1Njg1MzgiLCJuYW1lIjoiSmFoaWR1bCBJc2xhbSBIaXJvbiIsImVtYWlsIjoibmFtZWhpcm9uLjk2QGdtYWlsLmNvbSIsInByb2ZpbGUiOiI2MzYyN2Y3MmZhMzkwYzc0OGU1Njg1MzYiLCJsYW5nIjoxLCJyb2xlIjoyLCJzdGF0dXMiOjEsImlhdCI6MTY2NzQwMDI0MywiZXhwIjoxNjY4MDA1MDQzfQ.7sRRzAYorRSLk7llnDsfm8aS0rXNqZhAryerLOWWeKw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/user/64e6d68056e14ab1b7618df4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"user",
+								"64e6d68056e14ab1b7618df4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/signout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signout"
 							]
 						}
 					},
@@ -315,19 +528,13 @@
 			"name": "category",
 			"item": [
 				{
-					"name": "add-category",
+					"name": "add",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODY5NzgxOTksImV4cCI6MTY4NzU4Mjk5OX0.QcBSoUkSLTSphop-XfJiqipM9PByMufoUE9B_RnBnow",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Category 10\",\r\n    \"desc\": \"Description 10\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Toy\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -335,35 +542,27 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/category",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/categories",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"category"
+								"categories"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "updated-category",
+					"name": "update",
 					"request": {
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODY5NzgxOTksImV4cCI6MTY4NzU4Mjk5OX0.QcBSoUkSLTSphop-XfJiqipM9PByMufoUE9B_RnBnow",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Title 1 again update\",\r\n    \"desc\": \"Desc 1 updated\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Car\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -371,73 +570,25 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/category/648d3ec4d17da77c81fe71e2",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/categories/64e6fa1a7596f2ba6775f6ec",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"category",
-								"648d3ec4d17da77c81fe71e2"
+								"categories",
+								"64e6fa1a7596f2ba6775f6ec"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "delete-category",
+					"name": "remove",
 					"request": {
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODY5NzgxOTksImV4cCI6MTY4NzU4Mjk5OX0.QcBSoUkSLTSphop-XfJiqipM9PByMufoUE9B_RnBnow",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Title 2\",\r\n    \"desc\": \"Desc 1 updated\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/category/648d3ec4d17da77c81fe71e2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"category",
-								"648d3ec4d17da77c81fe71e2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get-categories",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY5Mjk0MzQyMiwiZXhwIjoxNjkzNTQ4MjIyfQ.iR5fIkN0w4p7V1Vi23f_ktwhr1SnSkybMQ0YnHkC970",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -448,51 +599,28 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/category?page=3",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/categories/64e6fa6a618c20cce70bd474",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"category"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "Description",
-									"disabled": true
-								},
-								{
-									"key": "size",
-									"value": "20",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "3"
-								}
+								"categories",
+								"64e6fa6a618c20cce70bd474"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get-category",
+					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODY5NzgxOTksImV4cCI6MTY4NzU4Mjk5OX0.QcBSoUkSLTSphop-XfJiqipM9PByMufoUE9B_RnBnow",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -503,325 +631,29 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/category/64868a9f98da3dc8272b3a85",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/categories",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"category",
-								"64868a9f98da3dc8272b3a85"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "file",
-			"item": [
-				{
-					"name": "upload-file",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODcyMjk3MDgsImV4cCI6MTY4NzgzNDUwOH0.l68m6hTgUKzxfn_4wPADHfGWgWd5XN5s2D2voKJ9koc",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/User/Downloads/profession/kisspng-computer-icons-avatar-business-computer-software-user-avatar-5b3097fcae25c3.3909949015299112927133.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/file/upload",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"file",
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "signed-url",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg5NWE2ZmUzNWZmZjYzMmJhODJkNDciLCJuYW1lIjoiSmFoaWQgSHJpb24iLCJlbWFpbCI6Im5hbWVoaXJvbi45NkBnbWFpbC5jb20iLCJyb2xlIjozLCJpYXQiOjE2OTMwMzYwNTQsImV4cCI6MTY5MzY0MDg1NH0.LGB2Erpf5DYZNzjFfEf3pFuzOlZqsJKww6ILvesHUpI",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/file/signed-url?key=855543482904_1687317123664.jpg",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"file",
-								"signed-url"
+								"categories"
 							],
 							"query": [
-								{
-									"key": "key",
-									"value": "855543482904_1687317123664.jpg"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete-file",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiVXNlciAxIiwiZW1haWwiOiJ1c2VyMUBnbWFpbC5jb20iLCJyb2xlIjoyLCJpYXQiOjE2ODcyMjk3MDgsImV4cCI6MTY4NzgzNDUwOH0.l68m6hTgUKzxfn_4wPADHfGWgWd5XN5s2D2voKJ9koc",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/file/delete-file?key=855543482904_1687317123664.jpg",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"file",
-								"delete-file"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "855543482904_1687317123664.jpg"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "post",
-			"item": [
-				{
-					"name": "new-post",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY4NzQ5MTcyMCwiZXhwIjoxNjg4MDk2NTIwfQ.OB3yWhBqNU_C0PY7VdJDD3hizpbE6IjzkrE9ixEJJ3I",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post 1\",\r\n    \"desc\": \"Desc 1\",\r\n    \"file\": \"649285ecc4a35ff00f1c1479\",\r\n    \"category\": \"648d3ee2d17da77c81fe71e7\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update-post",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY4NzQ5MTcyMCwiZXhwIjoxNjg4MDk2NTIwfQ.OB3yWhBqNU_C0PY7VdJDD3hizpbE6IjzkrE9ixEJJ3I",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post 1 updated\",\r\n    \"desc\": \"Desc 1 updated\",\r\n    \"file\": \"649285ecc4a35ff00f1c1479\",\r\n    \"category\": \"648d3ee2d17da77c81fe71e7\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/posts/649514e00706cdb1badddfd1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"posts",
-								"649514e00706cdb1badddfd1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete-post",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY4NzQ5MTcyMCwiZXhwIjoxNjg4MDk2NTIwfQ.OB3yWhBqNU_C0PY7VdJDD3hizpbE6IjzkrE9ixEJJ3I",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/posts/649514e00706cdb1badddfd1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"posts",
-								"649514e00706cdb1badddfd1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "post-list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg5NWE2ZmUzNWZmZjYzMmJhODJkNDciLCJuYW1lIjoiSmFoaWQgSHJpb24iLCJlbWFpbCI6Im5hbWVoaXJvbi45NkBnbWFpbC5jb20iLCJyb2xlIjozLCJpYXQiOjE2OTMwMzYwNTQsImV4cCI6MTY5MzY0MDg1NH0.LGB2Erpf5DYZNzjFfEf3pFuzOlZqsJKww6ILvesHUpI",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"posts"
-							],
-							"query": [
-								{
-									"key": "size",
-									"value": "5",
-									"disabled": true
-								},
 								{
 									"key": "page",
 									"value": "3",
 									"disabled": true
 								},
 								{
-									"key": "q",
-									"value": "post 2",
+									"key": "size",
+									"value": "2",
 									"disabled": true
 								},
 								{
-									"key": "category",
-									"value": "648d459f8e8150561b376202",
+									"key": "q",
+									"value": "car",
 									"disabled": true
 								}
 							]
@@ -830,19 +662,13 @@
 					"response": []
 				},
 				{
-					"name": "single-post",
+					"name": "detail",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg2OGE5Zjk4ZGEzZGM4MjcyYjNhODUiLCJuYW1lIjoiSmFoaWQiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOjIsImlhdCI6MTY4NzQ5MTcyMCwiZXhwIjoxNjg4MDk2NTIwfQ.OB3yWhBqNU_C0PY7VdJDD3hizpbE6IjzkrE9ixEJJ3I",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -853,17 +679,793 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/v1/posts/64951b52c988494cae6113cb",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/v1/categories/64e6d9255d0e732ddb23e34e",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"posts",
-								"64951b52c988494cae6113cb"
+								"categories",
+								"64e6d9255d0e732ddb23e34e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sub-category",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sub Category 6\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\",\r\n    \"category\": \"64e6fa6a618c20cce70bd474\",\r\n    \"attribute\": [\r\n        {\r\n            \"label\": \"Engine Type\",\r\n            \"inputType\": \"text\",\r\n            \"options\": []\r\n        },\r\n        {\r\n            \"label\": \"Milage\",\r\n            \"inputType\": \"text\",\r\n            \"options\": []\r\n        },\r\n        {\r\n            \"label\": \"Input 1\",\r\n            \"inputType\": \"select\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        },\r\n        {\r\n            \"label\": \"Input 2\",\r\n            \"inputType\": \"radio\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        },\r\n        {\r\n            \"label\": \"Input 2\",\r\n            \"inputType\": \"checkbox\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/sub-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sub-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Car\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\",\r\n    \"attribute\": [\r\n        {\r\n            \"label\": \"Engine Type\",\r\n            \"inputType\": \"text\",\r\n            \"options\": []\r\n        },\r\n        {\r\n            \"label\": \"Milage\",\r\n            \"inputType\": \"text\",\r\n            \"options\": []\r\n        },\r\n        {\r\n            \"label\": \"Input 1\",\r\n            \"inputType\": \"select\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        },\r\n        {\r\n            \"label\": \"Input 2\",\r\n            \"inputType\": \"radio\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        },\r\n        {\r\n            \"label\": \"Input 2\",\r\n            \"inputType\": \"checkbox\",\r\n            \"options\": [\"data 1\", \"data 2\", \"data 3\", \"data 4\"]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/sub-categories/64e9948b9205effc14a91436",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sub-categories",
+								"64e9948b9205effc14a91436"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/sub-categories/64e9948b9205effc14a91436",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sub-categories",
+								"64e9948b9205effc14a91436"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/sub-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sub-categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "Sub Category 5",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "64e6fa1a7596f2ba6775f6ec",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/sub-categories/64e9948b9205effc14a91436",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sub-categories",
+								"64e9948b9205effc14a91436"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test product 1\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\",\r\n    \"subCategory\": \"64e9948b9205effc14a91436\",\r\n    \"buyingPrice\": 20000,\r\n    \"sellingPrice\": 20000,\r\n    \"quantity\": 5,\r\n    \"discount\": 5,\r\n    \"model\": \"SEDAN-6872\",\r\n    \"registartionYear\": 2017,\r\n    \"attribute\": [\r\n        {\r\n            \"key\": \"milage\",\r\n            \"value\": \"30\"\r\n        },\r\n        {\r\n            \"key\": \"steering\",\r\n            \"value\": \"left\"\r\n        }\r\n        \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test product 1 again\",\r\n    \"desc\": \"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\",\r\n    \"subCategory\": \"64e994c09205effc14a91441\",\r\n    \"buyingPrice\": 21000,\r\n    \"sellingPrice\": 22000,\r\n    \"quantity\": 4,\r\n    \"discount\": 4,\r\n    \"model\": \"SEDAN-6873\",\r\n    \"registartionYear\": 2021,\r\n    \"attribute\": [\r\n        {\r\n            \"key\": \"milage\",\r\n            \"value\": \"25\"\r\n        },\r\n        {\r\n            \"key\": \"steering\",\r\n            \"value\": \"left\"\r\n        }\r\n        \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/64eadeed5cbb0c83df5452b0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"64eadeed5cbb0c83df5452b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/64eadeed5cbb0c83df5452b0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"64eadeed5cbb0c83df5452b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attribute\": [\r\n        {\r\n            \"key\": \"steering\",\r\n            \"value\": \"left\"\r\n        },\r\n        {\r\n            \"key\": \"milage\",\r\n            \"value\": \"25, 30\",\r\n            \"range\": true\r\n        },\r\n        {\r\n            \"key\": \"registration\",\r\n            \"value\": \"2019, 2020\",\r\n            \"range\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "car",
+									"disabled": true
+								},
+								{
+									"key": "priceRange",
+									"value": "19000, 20000",
+									"disabled": true
+								},
+								{
+									"key": "model",
+									"value": "SEDAN-6872",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "new",
+									"disabled": true
+								},
+								{
+									"key": "hasDiscount",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "public-list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attribute\": [\r\n        {\r\n            \"key\": \"steering\",\r\n            \"value\": \"left\"\r\n        },\r\n        {\r\n            \"key\": \"milage\",\r\n            \"value\": \"25, 30\",\r\n            \"range\": true\r\n        },\r\n        {\r\n            \"key\": \"registration\",\r\n            \"value\": \"2019, 2020\",\r\n            \"range\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/public/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"public",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "Test product 1",
+									"disabled": true
+								},
+								{
+									"key": "priceRange",
+									"value": "19000, 20000",
+									"disabled": true
+								},
+								{
+									"key": "model",
+									"value": "SEDAN-6872",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "new",
+									"disabled": true
+								},
+								{
+									"key": "hasDiscount",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/test-product-1-again-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"test-product-1-again-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "public-detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products/public/test-product-1-again-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"public",
+								"test-product-1-again-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 1,\r\n    \"product\": \"64eadf4c5cbb0c83df5452da\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 1,\r\n    \"product\": \"64eadf4c5cbb0c83df5452da\",\r\n    \"isPaid\": true,\r\n    \"isDelivered\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orders/64ed7dd9422467f30b013e11",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"64ed7dd9422467f30b013e11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orders/64ed7dd9422467f30b013e11",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"64ed7dd9422467f30b013e11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "alien black and white 7455",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orders/64ed7dd9422467f30b013e11",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"64ed7dd9422467f30b013e11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rating",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4,\r\n    \"product\": \"64eadf1a5cbb0c83df5452be\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/ratings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/ratings/64e6fa6a618c20cce70bd474",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ratings",
+								"64e6fa6a618c20cce70bd474"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/ratings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ratings"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "product",
+									"value": "64eadeed5cbb0c83df5452b0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/ratings/64eed389b3b7c4950ecaa0d9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ratings",
+								"64eed389b3b7c4950ecaa0d9"
 							]
 						}
 					},

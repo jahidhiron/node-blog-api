@@ -130,7 +130,7 @@ const getPosts = async (req, res, next) => {
       .populate("file")
       .populate("category")
       .populate("updatedBy", "-password -verificationCode -forgotPasswordCode")
-      .sort({ updatedBy: -1 })
+      .sort({ _id: -1 })
       .skip((pageNumber - 1) * sizeNumber)
       .limit(sizeNumber);
 
