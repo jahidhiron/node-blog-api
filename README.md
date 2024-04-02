@@ -1,3 +1,7 @@
+# Description
+
+This repository is about Udemy teaching purpose as a instructor
+
 # Installation, up and running
 
 Launch the Terminal app and use bellow command to install, up and running
