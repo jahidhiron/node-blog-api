@@ -12,8 +12,8 @@ This repository contains a simple Node.js blog API developed for educational pur
 - [Usage](#usage)
 - [Features](#features)
 - [API Endpoints](#endpoints)
-- [API Endpoints](#technology)
-- [API Endpoints](#decision)
+- [Technology](#technology)
+- [Decision](#decision)
 - [License](#license)
 
 ## Installation
