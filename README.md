@@ -1,39 +1,67 @@
-# Description
+# Nodejs Blog REST API
 
-This repository is used as teaching purpose on Udemy
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Installation, up and running
+## Description
 
-Launch the Terminal app and use bellow command to install, up and running
+This repository contains a simple Node.js blog API developed for educational purposes, particularly for teaching on Udemy. It provides a basic foundation for understanding how to create RESTful APIs using Node.js, Express.js, and MongoDB.
 
-## Clone repository
+## Table of Contents
 
-Run bellow command to clone this repository <br />
-`git clone git@github.com:jahidhiron/node-blog-api.git .`
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [API Endpoints](#endpoints)
+- [API Endpoints](#technology)
+- [API Endpoints](#decision)
+- [License](#license)
 
-## Server installation, up and running
+## Installation
 
-You may use npm or yarn. Like `yarn` and `yarn start` <br />
+Install MongoDb Database
 
-`npm install` <br />
-`npm start` <br />
-<br />
-<br />
+```bash
+git clone git@github.com:jahidhiron/node-blog-api.git
+cd node-blog-api
+npm install
+```
 
-# Documentation
+## Usage
 
-Here I have discussed about which technology I have used, and why used. <br />
+```bash
+npm start
+```
 
-## Server side technology
+## Features
 
-### Framework/Library and modules
+- Authentication and Authorization
+- Add, Update, Delete blog posts
+- Search and filter blogs with pagination
+- Sending email
+- Flexible and easy-to-use API endpoints
+- Scalable and well-documented codebase
 
-1. I have used `node.js` runtime environment for server side
+
+## API Endpoints
+
+Look at 'api-collection/api-collection.json' file for API end point
+
+
+## Technology
+
+1. Used `node.js` runtime environment for server side
 2. `Express.js` web framework
 3. To validate request, I have used `express-validator`
+4. `SendGrid` is used to send email
+
 
 ## Decision
 
 1. `Why nodejs/Express?: ` Node. js uses non-blocking, event-driven I/O to remain lightweight and efficient in the face of data-intensive real-time applications that run across distributed devices.
 2. I have used pagination instead of loading all data at a time. Initially, it loads 10 items
 3. Authentication, authorization, user verify, recover password are added to this app
+
+
+## License
+
+This project is licensed under the MIT License.
