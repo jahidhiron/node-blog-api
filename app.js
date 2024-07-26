@@ -27,6 +27,12 @@ app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/file", fileRoute);
 app.use("/api/v1/posts", postRoute);
 
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .json({ code: 200, status: true, message: "Server is running." });
+});
+
 // not found route
 app.use("*", notfound);
 
